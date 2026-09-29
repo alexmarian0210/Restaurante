@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#d9534f">
+    <meta name="description" content="Sistema de restaurante - cardápio, vendas e controle de estoque">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="SisChef">
+
+    <title>Restaurante</title>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icons/icon-192.png">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="brand">
+            <div class="brand-icon">🍽️</div>
+            <div>
+                <h1></h1>
+                <span>Sistema de Restaurante</span>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <span id="status-api" class="status status-loading">Conectando...</span>
+            <button id="btn-instalar" class="btn-header" type="button" hidden>＋ Instalar app</button>
+            <button id="btn-atualizar" class="btn-header btn-refresh" type="button" title="Atualizar dados">↻</button>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <section id="cardapio" class="card card-cardapio">
+            <div class="section-title">
+                <div>
+                    <span class="eyebrow">VENDAS</span>
+                    <h2>Cardápio</h2>
+                </div>
+                <span class="section-badge">PDV</span>
+            </div>
+
+            <div id="abas-cardapio" class="abas-cardapio" role="tablist" aria-label="Categorias do cardápio">
+                <button type="button" class="aba-cardapio aba-ativa" data-categoria="Entrada" role="tab" aria-selected="true">Entrada</button>
+                <button type="button" class="aba-cardapio" data-categoria="Prato Principal" role="tab" aria-selected="false">Prato Principal</button>
+                <button type="button" class="aba-cardapio" data-categoria="Sobremesa" role="tab" aria-selected="false">Sobremesa</button>
+            </div>
+
+            <div id="grid-pratos" class="grid-pratos" aria-live="polite">
+                <div class="loading-card">Carregando cardápio...</div>
+            </div>
+        </section>
+
+        <section id="estoque" class="card card-estoque">
+            <div class="section-title">
+                <div>
+                    <span class="eyebrow">GESTÃO</span>
+                    <h2>Estoque</h2>
+                </div>
+                <span class="section-badge">ATUAL</span>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Atual</th>
+                            <th>Mín.</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-estoque">
+                        <tr><td colspan="3">Carregando estoque...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navegação principal">
+        <a class="nav-item nav-ativa" href="#cardapio">
+            <span>🍽️</span>
+            <small>Cardápio</small>
+        </a>
+        <a class="nav-item" href="#estoque">
+            <span>📦</span>
+            <small>Estoque</small>
+        </a>
+    </nav>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
